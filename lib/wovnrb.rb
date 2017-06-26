@@ -49,8 +49,7 @@ module Wovnrb
         unless @store.settings['ignore_globs'].any?{|g| g.match?(headers.pathname)}
           # ApiData creates request for external server, but cannot use async.
           # Because some server not allow multi thread. (env['async.callback'] is not supported at all Server).
-          api_data = ApiData.new(headers.redis_url, @store)
-          values = api_data.get_data
+          values = get_values(env, headers.redis_url, @store)
           url = {
             :protocol => headers.protocol,
             :host => headers.host,
@@ -104,7 +103,15 @@ module Wovnrb
       body.close if body.respond_to?(:close)
       new_body
     end
+
+    private
+
+    WOVN_TRANSLATE_KEY = 'WOVN_TRANSLATE'
+
+    def get_values(env, redis_url, store)
+      values = env[WOVN_TRANSLATE_KEY]
+      return values if values
+      ApiData.new(redis_url, @store).get_data
+    end
   end
-
 end
-
