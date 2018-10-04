@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Wovnrb
   module UnifiedValues
-    class NodeSwappingTargetsCreatorTest < ActiveSupport::TestCase
+    class NodeSwappingTargetsCreatorTest < WovnMiniTest
       def test_run
         html = 'a<a>b</a>c'
         result = UnifiedValues::TextScraper.new(Set.new).run(Nokogiri::HTML5(html))
