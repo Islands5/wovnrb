@@ -27,6 +27,7 @@ require 'wovnrb/html_replacers/meta_replacer'
 require 'wovnrb/html_replacers/image_replacer'
 require 'wovnrb/html_replacers/script_replacer'
 require 'wovnrb/helpers/nokogumbo_helper'
+require 'wovnrb/html_replacers/unified_values/text_replacer'
 require 'minitest/autorun'
 
 
