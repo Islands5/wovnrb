@@ -47,6 +47,8 @@ module Wovnrb
 
       def test_run_fixtures_of_br_tag
         assert_shared_fixture('small_html/br_tag')
+        debugger
+        assert_equal(1, 2)
       end
 
       def test_run_fixtures_of_empty_text

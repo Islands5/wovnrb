@@ -18,6 +18,7 @@ require 'nokogumbo'
 require 'rack'
 require 'minitest/autorun'
 require 'shoulda/context'
+require 'active_support'
 
 require 'wovnrb/headers'
 require 'wovnrb/lang'
