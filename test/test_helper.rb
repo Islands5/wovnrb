@@ -16,6 +16,9 @@ end
 
 require 'nokogumbo'
 require 'rack'
+require 'minitest/autorun'
+require 'shoulda/context'
+
 require 'wovnrb/headers'
 require 'wovnrb/lang'
 require 'wovnrb/store'
@@ -33,10 +36,6 @@ require 'wovnrb/html_replacers/unified_values/element_category'
 require 'wovnrb/html_replacers/unified_values/dst_swapping_targets_creator'
 require 'wovnrb/html_replacers/unified_values/node_swapping_targets_creator'
 require 'wovnrb/helpers/nokogumbo_helper'
-
-require 'minitest/autorun'
-require 'shoulda/context'
-
 
 module Wovnrb
   class WovnMiniTest < Minitest::Test
