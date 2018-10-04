@@ -12,7 +12,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(%w[a b c], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -25,7 +25,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal([' a ', ' b ', ' c '], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -38,7 +38,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(['', 'b', 'c'], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -51,7 +51,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(['a', 'b', ''], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -64,7 +64,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(['a', '', 'c'], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -77,7 +77,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(['', '', ''], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -90,7 +90,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(['a'], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -103,7 +103,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(%w[a c], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -116,7 +116,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(%w[a bc], text_index['']['en'][0]['swapping_targets'])
       end
 
@@ -129,7 +129,7 @@ module Wovnrb
           }
         }
 
-        UnifiedValues::DstSwappingTargetsCreator.new(text_index).run!
+        DstSwappingTargetsCreator.new(text_index).run!
         assert_equal(%w[a b c d], text_index['']['en'][0]['swapping_targets'])
       end
     end

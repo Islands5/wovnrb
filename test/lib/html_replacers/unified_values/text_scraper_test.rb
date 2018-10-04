@@ -8,7 +8,7 @@ module Wovnrb
         expected_values = JSON.parse(File.read("test/fixtures/unified_values/#{base_name}_expected.json"))
 
         dom = Nokogiri::HTML5.parse(html)
-        actual_values = UnifiedValues::TextScraper.new(ignored_classes).run(dom)
+        actual_values = TextScraper.new(ignored_classes).run(dom)
 
         assert_shared_fixture_values(expected_values, actual_values)
       end
