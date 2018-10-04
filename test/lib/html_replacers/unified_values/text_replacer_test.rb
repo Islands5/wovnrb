@@ -31,7 +31,6 @@ module Wovnrb
                 -->\u200b</div>
           HTML
 
-          store = Store.instance
           text_index = {
               'a<span>b</span>c' =>
                   { 'ja' =>
@@ -43,26 +42,21 @@ module Wovnrb
                   { 'ja' =>
                         [{ 'data' => 'あ<span>い</span>' }] }
           }
-          replacer = TextReplacer.new(store, text_index)
 
-          dom = Wovnrb.get_dom(innerHtml)
+          assert_text_replace(text_index, innerHtml, expected_body)
+        end
+
+        def assert_text_replace(text_index, body, expected_body)
+          store = Store.instance
+          dom = Wovnrb.get_dom(body)
+          replacer = TextReplacer.new(store, text_index)
           replacer.replace(dom, Lang.new('ja'))
 
-          # node = dom.xpath('//text()')[0]
-          # assert_equal('こんにちは', node.content)
-          # assert_equal('wovn-src:Hello', node.previous.content)
-          #
-          #
-          # dom = Nokogiri::HTML5(innerHtml)
-          # dom.encoding = 'UTF-8'
-
-          # api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          # UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
           assert(dom.to_html.include?(expected_body))
         end
 
         def test_replace_with_dst_with_spaces
-          html = <<-HTML
+          innerHtml = <<-HTML
       <html>
         <body>
           <div>
@@ -104,11 +98,7 @@ module Wovnrb
                         [{ 'data' => 'あ <span> い </span>' }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, innerHtml, expected_body)
         end
 
         def test_replace_with_empty_translations
@@ -140,12 +130,7 @@ module Wovnrb
                         [{ 'data' => "\u200b" }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
 
         def test_replace_with_comment
@@ -173,12 +158,7 @@ module Wovnrb
                         [{ 'data' => 'あ<span>い</span>う' }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
 
       def test_replace_with_comment_inside_content
@@ -205,12 +185,7 @@ module Wovnrb
                         [{ 'data' => 'あ<span>い</span>う' }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
 
         def test_replace_without_destination_of_expected_lang
@@ -236,12 +211,7 @@ module Wovnrb
                         [{ 'data' => 'あ<span>い</span>う' }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
 
         def test_replace_without_expected_destination
@@ -263,12 +233,7 @@ module Wovnrb
 
           text_index = {}
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
 
         def test_replace_data_without_tag
@@ -294,12 +259,7 @@ module Wovnrb
                         [{ 'data' => 'りんご' }] }
           }
 
-          dom = Nokogiri::HTML5(html)
-          dom.encoding = 'UTF-8'
-
-          api_data = build_api_data(custom_page_values: { 'text_vals' => {}, 'html_text_vals' => text_index })
-          UnifiedValues::TextReplacer.new(api_data).replace(dom, Lang.new('ja'))
-          assert(dom.to_html.include?(expected_body))
+          assert_text_replace(text_index, html, expected_body)
         end
       end
     end
