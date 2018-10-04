@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
-  test 'run' do
+  def test_run
     text_index = {
       '' => {
         'en' => [
@@ -14,7 +14,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(%w[a b c], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_spaces' do
+  def test_run_with_data_with_spaces
     text_index = {
       '' => {
         'en' => [
@@ -27,7 +27,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal([' a ', ' b ', ' c '], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_stated_by_tag' do
+  def test_run_with_data_stated_by_tag
     text_index = {
       '' => {
         'en' => [
@@ -40,7 +40,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(['', 'b', 'c'], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_ended_by_tag' do
+  def test_run_with_data_ended_by_tag
     text_index = {
       '' => {
         'en' => [
@@ -53,7 +53,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(['a', 'b', ''], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_no_content_inside_tag' do
+  def test_run_with_data_with_no_content_inside_tag
     text_index = {
       '' => {
         'en' => [
@@ -66,7 +66,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(['a', '', 'c'], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_tag_only' do
+  def test_run_with_data_with_tag_only
     text_index = {
       '' => {
         'en' => [
@@ -79,7 +79,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(['', '', ''], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_without_tag' do
+  def test_run_with_data_without_tag
     text_index = {
       '' => {
         'en' => [
@@ -92,7 +92,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(['a'], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_wovn_ignore' do
+  def test_run_with_data_with_wovn_ignore
     text_index = {
       '' => {
         'en' => [
@@ -105,7 +105,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(%w[a c], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_closing_tag' do
+  def test_run_with_data_with_closing_tag
     text_index = {
       '' => {
         'en' => [
@@ -118,7 +118,7 @@ class DstSwappingTargetsCreatorTest < ActiveSupport::TestCase
     assert_equal(%w[a bc], text_index['']['en'][0]['swapping_targets'])
   end
 
-  test 'run_with_data_with_both_closing_tag_and_no_closing_tag' do
+  def test_run_with_data_with_both_closing_tag_and_no_closing_tag
     text_index = {
       '' => {
         'en' => [

@@ -1,8 +1,8 @@
 require 'test_helper'
 
-module Swapper
+module Wovnrb
   module UnifiedValues
-    class TagStackTest < ActiveSupport::TestCase
+    class ValueStackTest < WovnMiniTest
       def setup
         @doc = Nokogiri('<html></html>')
       end

@@ -10,7 +10,7 @@ module Wovnrb
       #        (Text "an"),
       #        (Element:0x13e84e1334 { name = "span", children = [ #(Text "apple is a good")] }),
       #        (Text "apple is a good"),
-      #        (Element:0x13e84e1334 { name = "span", children = [ #(Text "apple is a good")] }),
+      #        (Element:0x13e84e1334 { name = "span", childrelib/wovnrb/html_replacers/unified_values/node_swapping_targets_creator.rbn = [ #(Text "apple is a good")] }),
       #        (Text "\n          foods\n        \n      \n")]}
       #      ]
       #   }

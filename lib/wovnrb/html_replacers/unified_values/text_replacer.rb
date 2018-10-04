@@ -2,9 +2,9 @@ module Wovnrb
   module UnifiedValues
     class TextReplacer < ReplacerBase
       # @param api_data [ApiData]
-      def initialize(api_data)
-        super(api_data.ignored_class_set)
-        @text_index = api_data.text_index
+      def initialize(store, text_index)
+        super(store)
+        @text_index = text_index
       end
 
       def replace(dom, lang)

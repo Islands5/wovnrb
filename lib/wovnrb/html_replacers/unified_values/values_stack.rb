@@ -1,3 +1,5 @@
+require 'wovnrb/services/value_agent'
+
 module Wovnrb
   module UnifiedValues
     class ValuesStack
@@ -19,14 +21,14 @@ module Wovnrb
       # @param src [String]
       def add(node, src)
         @node_stack << node if node.name != 'text' || node.content.present?
-        @src_stack << ValueAgent.normalize_text(src)
+        @src_stack << Wovnrb::ValueAgent.normalize_text(src)
       end
 
       # @param node [Nokogiri::XML::Element]
       # @param dom_content [String]
       def add_text_element(node, dom_content)
         add(node, CGI.escapeHTML(dom_content))
-        @src_without_tag_stack << ValueAgent.normalize_text(dom_content)
+        @src_without_tag_stack << Wovnrb::ValueAgent.normalize_text(dom_content)
       end
 
       # @return [Bool]

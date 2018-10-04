@@ -28,7 +28,11 @@ require 'wovnrb/html_replacers/image_replacer'
 require 'wovnrb/html_replacers/script_replacer'
 require 'wovnrb/helpers/nokogumbo_helper'
 require 'wovnrb/html_replacers/unified_values/text_replacer'
+require 'wovnrb/html_replacers/unified_values/text_scraper'
+require 'wovnrb/html_replacers/unified_values/values_stack'
+require 'wovnrb/html_replacers/unified_values/element_category'
 require 'minitest/autorun'
+require 'shoulda/context'
 
 
 module Wovnrb
@@ -113,4 +117,11 @@ module Wovnrb
   end
 
   module_function :get_env, :get_settings, :to_dom, :get_dom
+
+  def build_api_data(custom_page_values: {}, custom_project_data: {})
+    page_values = default_page_values.merge(custom_page_values)
+    project_data = default_project_data.merge(custom_project_data)
+
+    ApiData.new('dummy-key', page_values, project_data)
+  end
 end
