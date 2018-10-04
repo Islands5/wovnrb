@@ -31,6 +31,8 @@ require 'wovnrb/html_replacers/unified_values/text_replacer'
 require 'wovnrb/html_replacers/unified_values/text_scraper'
 require 'wovnrb/html_replacers/unified_values/values_stack'
 require 'wovnrb/html_replacers/unified_values/element_category'
+require 'wovnrb/html_replacers/unified_values/dst_swapping_targets_creator'
+
 require 'minitest/autorun'
 require 'shoulda/context'
 
