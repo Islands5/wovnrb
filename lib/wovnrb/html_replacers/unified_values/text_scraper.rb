@@ -54,8 +54,6 @@ module Wovnrb
           scrape_children_of(dom)
           build_src
           @values_stack = next_stack
-          # NOTE: I will remove this after tying unified value on production
-          Rails.logger.info("scrape ignored #{dom.name}(#{dom.path})")
         end
 
         @values
